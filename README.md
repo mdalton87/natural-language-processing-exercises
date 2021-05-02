@@ -1,1 +1,1 @@
-# natural-language-processing-exercises
+This repository has been created to hold all of my Codeup natural language processing exercises.
