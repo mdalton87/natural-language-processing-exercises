@@ -148,57 +148,53 @@ def remove_stopwords(string, extra_words=None, exclude_words=None):
     ----------
     string: str
         String to have stopwords removed.
-    extra_words: list
+    extra_words: str or list
         default=None, list of words that you would like to be added to the stopwords list
-    exclude_words: list 
+    exclude_words: str or list 
         default=None, list of words that you would like to remove from the stopwords list
  
     '''
     # creates a list of stopwords
     stopword_list = stopwords.words('english')
-
     # splits the string into a list of words
     words = string.split()
+    
     
     # if extra_words is set to None don't change anything
     if extra_words == None:
         stopword_list = stopword_list
-        
     # if extra_words is a list, append the individual words in the list
     elif type(extra_words) == list:
         for word in extra_words:
             stopword_list.append(word)
-            
     # if extra_words is a string, append the individual word
     elif type(extra_words) == str:
         stopword_list.append(extra_words)
-        
     # somethings wrong text
     else:
         print('extra_words should be a string or a list')
     
+    
     # if exclude_words is set to None don't change anything
     if exclude_words == None:
         stopword_list = stopword_list
-    
     # if exclude_words is a list, append the individual words in the list
     elif type(exclude_words) == list:
         for word in exclude_words:
             stopword_list.remove(word)
-    
     # if exclude_words is a string, append the individual word
     elif type(extra_words) == str:
         stopword_list.remove(exclude_words)
-        
     # something's wrong text
     else:
         print('exclude_words should be a string or list')
-    
+
+        
     # filters out stopwords from string
     filtered_words = [word for word in words if word not in stopword_list]
-
     # rejoins the string 
     string_without_stopwords = ' '.join(filtered_words)
+    
     
     return string_without_stopwords
 
@@ -246,3 +242,19 @@ def clean_lem_stop(string):
     removes stopwords. 
     '''
     return remove_stopwords(lemmatize(tokenize(basic_clean(string))))
+
+
+def clean_and_toke(string):
+    '''
+    Desciption:
+    ----------
+    This is a one stop function that takes a string and does the following:
+    cleans: 
+        normalizes it by:
+        making all text lowercase,
+        removing special characters,
+        removing characters that are not alphanumeric, whitespace, or a single quote, and
+        removing the new line '\n' indicator
+    and tokenizes. 
+    '''
+    return tokenize(basic_clean(string))
