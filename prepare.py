@@ -27,7 +27,7 @@ def basic_clean(string):
         making all text lowercase,
         removing special characters,
         removing characters that are not alphanumeric, whitespace, or a single quote, and
-        removing the new line '\n' indicator.
+        removing the new line indicator.
     
     Parameters:
     string: str
@@ -75,7 +75,6 @@ def tokenize(string):
     string = tokenizer.tokenize(string, return_str = True)
     
     return string
-
 
 
 
@@ -219,12 +218,13 @@ def clean_stem_stop(string):
         making all text lowercase,
         removing special characters,
         removing characters that are not alphanumeric, whitespace, or a single quote, and
-        removing the new line '\n' indicator.
+        removing the new line indicator.
     tokenizes, 
     stems, and 
     removes stopwords. 
     '''
     return remove_stopwords(stem(tokenize(basic_clean(string))))
+
 
 def clean_lem_stop(string):
     '''
@@ -236,7 +236,7 @@ def clean_lem_stop(string):
         making all text lowercase,
         removing special characters,
         removing characters that are not alphanumeric, whitespace, or a single quote, and
-        removing the new line '\n' indicator.
+        removing the new line indicator.
     tokenizes, 
     lemmatizes, and 
     removes stopwords. 
@@ -258,3 +258,6 @@ def clean_and_toke(string):
     and tokenizes. 
     '''
     return tokenize(basic_clean(string))
+
+
+
