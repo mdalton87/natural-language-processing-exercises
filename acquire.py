@@ -105,13 +105,14 @@ def all_codeup_blogs():
 
 
 
-def inshorts_articles(article):
+def inshorts_articles(article, cat):
     return {
         'title': article.find(itemprop="headline").text,
         'body': article.find(itemprop="articleBody").text,
         'author': article.find(class_="author").text,
         'date_modified': article.find(clas="date").text,
         'time_modified': article.find(class_="time").text,
+        'category': cat,
     }
 
 
@@ -131,9 +132,10 @@ def get_inshorts_articles(categories):
         article = articles[0]
         
         # converts dictionary into a dataframe
-        article_df = pd.DataFrame([inshorts_articles(article) for article in articles])
+        article_df = pd.DataFrame([inshorts_articles(article, cat) for article in articles])
     
         # concats the container_df to the blog_df created earlier
         inshort_df = pd.concat([inshort_df, article_df], axis=0)
     
     return inshort_df.reset_index(drop=True)
+
