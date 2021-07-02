@@ -34,7 +34,7 @@ def counts_and_ratios(df, column):
 
 def create_wordcloud(string):
     # generates an img
-    img = WordCloud(background_color='white').generate(ham_string)
+    img = WordCloud(background_color='white').generate(string)
     # WordCloud() produces an image object, which can be displayed with plt.imshow
     plt.imshow(img)
     # axis aren't very useful for a word cloud
